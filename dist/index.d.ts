@@ -2,11 +2,14 @@ declare module 'rxfile-write' {
 
   export function exists(
     path: String,
-  ): Promise<void>;
+  ): Promise<{
+    dir: Boolean;
+    file: Boolean
+  }>;
 
   export function read(
     path: String,
-  ): Promise<void>;
+  ): Promise<{ data: String }>;
 
   export function write(
     path: String,

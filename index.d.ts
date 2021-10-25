@@ -1,19 +1,15 @@
 declare module 'rxfile-write' {
 
-  export class Stat {
-    dir: Boolean;
-    file: Boolean
-  }
-
-  export class ReadData { data: String }
-
   export function exists(
     path: String,
-  ): Promise<Stat>;
+  ): Promise<{
+    dir: Boolean;
+    file: Boolean
+  }>;
 
   export function read(
     path: String,
-  ): Promise<ReadData>;
+  ): Promise<{ data: String }>;
 
   export function write(
     path: String,
