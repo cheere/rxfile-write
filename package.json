@@ -22,8 +22,8 @@
     "url": "https://github.com/cheere/rxfile-write/issues"
   },
   "keywords": [
-    "file-write",
-    "lipo"
+    "file",
+    "node"
   ],
   "homepage": "https://github.com/cheere/rxfile-write#readme",
   "devDependencies": {
