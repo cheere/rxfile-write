@@ -1,6 +1,8 @@
 # rxfile-write
 
-[EN](https://github.com/cheere/rxfile-write/blob/main/README.md)
+[EN](https://github.com/cheere/rxfile-write)
+
+Node.js -> fs:
 
 1. 确定 `文件`/`目录` 是否存在
 1. 阅读`文件`中的所有内容

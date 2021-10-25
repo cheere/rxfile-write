@@ -2,6 +2,8 @@
 
 [中文](https://github.com/cheere/rxfile-write/blob/main/README_CH.md)
 
+Node.js -> fs:
+
 1. Determine whether the `file`/`directory` exists
 1. `Read` everything in the `file`
 1. `Erase` write content to file，or `add` content to a file

@@ -1,12 +1,13 @@
 {
   "name": "rxfile-write",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Addition, deletion, modification and query of documents.",
   "main": "dist/index.js",
   "scripts": {
-    "build": "npm run clear && npm run lib",
+    "build": "npm run clear && npm run lib && npm run cp",
     "clear": "node build/rm-dist",
     "lib": "rollup -c build/rollup.config.js",
+    "cp": "node build/rp-ts",
     "test": "node demo/test"
   },
   "unpkg": "dist/rxfile-write.js",

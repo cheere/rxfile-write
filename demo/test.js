@@ -1,4 +1,5 @@
 const rxfileWrite = require('../dist/index')
+// const rxfileWrite = require('rxfile-write') // look d.ts
 const path = require('path')
 
 function ps (p) {
