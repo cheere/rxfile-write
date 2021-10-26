@@ -30,7 +30,6 @@ LibW.writeAppendSync = function (filePath, text) {
   doWriteSync(filePath, text, true)
 }
 
-
 /**
  * Write content to file
  * @param {string} filePath

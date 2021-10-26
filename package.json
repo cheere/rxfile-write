@@ -22,6 +22,7 @@
     "url": "https://github.com/cheere/rxfile-write/issues"
   },
   "keywords": [
+    "fs",
     "file",
     "node"
   ],

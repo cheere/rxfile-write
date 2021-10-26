@@ -1,5 +1,8 @@
 declare module 'rxfile-write' {
 
+  /**
+   * Determine whether the file/directory exists
+   */
   export function exists(
     path: String,
   ): Promise<{
@@ -7,20 +10,33 @@ declare module 'rxfile-write' {
     file: Boolean
   }>;
 
+  /**
+   * Read everything in the file
+   */
   export function read(
     path: String,
   ): Promise<{ data: String }>;
 
+  /**
+   * 往文件里面擦除式写内容
+   * Erase write content to file
+   */
   export function write(
     path: String,
     data: String | Buffer
   ): Promise<void>;
 
+  /**
+   * Add content to a file
+   */
   export function writeAppend(
     path: String,
     data: String | Buffer
   ): Promise<void>;
 
+  /**
+   * Write content to file
+   */
   export function writeTo(
     path: String,
     data: String | Buffer,
@@ -37,6 +53,9 @@ declare module 'rxfile-write' {
     data: String | Buffer
   ): void;
 
+  /**
+   * Delete file/directory
+   */
   export function remove(
     path: String,
   ): Promise<void>;
