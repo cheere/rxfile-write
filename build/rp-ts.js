@@ -1,4 +1,4 @@
-const pathResolve  = require('path').resolve
+const pathResolve = require('path').resolve
 const rxfileWrite = require('../dist/index')
 
 const DistPath = pathResolve(__dirname, '..', 'dist')

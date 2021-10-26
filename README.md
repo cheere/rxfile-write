@@ -12,36 +12,36 @@ Node.js -> fs:
 # Usage
 ```js
   // node / cjs
-  const rxfileWrite = require('rxfile-write')
+  const RxfileWrite = require('rxfile-write')
   // or
-  import rxfileWrite from 'rxfileWrite'
+  import RxfileWrite from 'RxfileWrite'
   const path = require('path')
 
   function ps (p) {
     return path.resolve(__dirname, '..', p)
   }
 
-  // - - rxfileWrite.read - -
-  rxfileWrite.read(ps('LICENSE')).then(data => {
+  // - - RxfileWrite.read - -
+  RxfileWrite.read(ps('LICENSE')).then(data => {
     console.log('data\n\n', data)
   }).catch(err => {
     console.log('read error=', err)
   })
 
-  // - - rxfileWrite.exists - -
-  rxfileWrite.exists(ps('LICENSE')).then(() => {
+  // - - RxfileWrite.exists - -
+  RxfileWrite.exists(ps('LICENSE')).then(() => {
     console.log('exists is ok')
   }).catch(err => {
     console.log('exists error=', err)
   })
 
-  // - - rxfileWrite.write - -
-  rxfileWrite.write(ps('ttt.txt'), 'hello world!').then(() => {
+  // - - RxfileWrite.write - -
+  RxfileWrite.write(ps('ttt.txt'), 'hello world!').then(() => {
     console.log('write succ')
 
     setTimeout(() => {
-      // - - rxfileWrite.remove - -
-      rxfileWrite.remove(ps('ttt.txt')).then(() => {
+      // - - RxfileWrite.remove - -
+      RxfileWrite.remove(ps('ttt.txt')).then(() => {
         console.log('remove succ')
       }).catch(err => {
         console.log('remove error=', err)

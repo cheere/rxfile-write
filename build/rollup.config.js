@@ -4,8 +4,8 @@ import globals from 'rollup-plugin-node-globals'
 
 import commonjs from '@rollup/plugin-commonjs'
 import replace from 'rollup-plugin-replace'
-import {terser} from 'rollup-plugin-terser'
-const path  = require('path')
+import { terser } from 'rollup-plugin-terser'
+const path = require('path')
 const config = require('./config')
 const { configVersion } = require('./util.config')
 

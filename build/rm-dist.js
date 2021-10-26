@@ -1,5 +1,5 @@
 const fs = require('fs')
-const pathResolve  = require('path').resolve
+const pathResolve = require('path').resolve
 
 const distPath = pathResolve(__dirname, '..', 'dist')
 

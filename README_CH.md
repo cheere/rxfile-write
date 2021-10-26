@@ -12,36 +12,36 @@ Node.js -> fs:
 # 使用
 ```js
   // node / cjs
-  const rxfileWrite = require('rxfile-write')
+  const RxfileWrite = require('rxfile-write')
   // or
-  import rxfileWrite from 'rxfileWrite'
+  import RxfileWrite from 'RxfileWrite'
   const path = require('path')
 
   function ps (p) {
     return path.resolve(__dirname, '..', p)
   }
 
-  // - - rxfileWrite.read 读内容- -
-  rxfileWrite.read(ps('LICENSE')).then(data => {
+  // - - RxfileWrite.read 读内容- -
+  RxfileWrite.read(ps('LICENSE')).then(data => {
     console.log('data\n\n', data)
   }).catch(err => {
     console.log('read error=', err)
   })
 
-  // - - rxfileWrite.exists 判断是否存在- -
-  rxfileWrite.exists(ps('LICENSE')).then(() => {
+  // - - RxfileWrite.exists 判断是否存在- -
+  RxfileWrite.exists(ps('LICENSE')).then(() => {
     console.log('exists is ok')
   }).catch(err => {
     console.log('exists error=', err)
   })
 
-  // - - rxfileWrite.write 写 - -
-  rxfileWrite.write(ps('ttt.txt'), 'hello world!').then(() => {
+  // - - RxfileWrite.write 写 - -
+  RxfileWrite.write(ps('ttt.txt'), 'hello world!').then(() => {
     console.log('write succ')
 
     setTimeout(() => {
-      // - - rxfileWrite.remove 删除 - -
-      rxfileWrite.remove(ps('ttt.txt')).then(() => {
+      // - - RxfileWrite.remove 删除 - -
+      RxfileWrite.remove(ps('ttt.txt')).then(() => {
         console.log('remove succ')
       }).catch(err => {
         console.log('remove error=', err)
