@@ -61,6 +61,7 @@ Node.js -> fs:
 1. writeAppend
 1. writeAppendSync
 1. writeTo
+1. remove
 
 # License
 [MIT](https://github.com/cheere/rxfile-write/blob/main/LICENSE)
