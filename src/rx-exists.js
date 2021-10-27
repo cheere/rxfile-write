@@ -30,4 +30,22 @@ LibEs.exists = function (path) {
   })
 }
 
+
+LibEs.existsSync = function (path) {
+  const _that = this
+  if (!path) {
+    reject(_that.error('rxrrw-existsSync=> path undefined'))
+    return
+  }
+  const fileInfo = fs.statSync(path)
+  if (fileInfo.isDirectory()) {
+    return { dir: true, file: false }
+  } else if (fileInfo.isFile()) {
+    return { dir: false, file: true }
+  } else {
+    _that.error('rxrrw-exist=> stats not dir/file')
+    return { dir: false, file: false }
+  }
+}
+
 export default LibEs

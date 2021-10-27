@@ -1,12 +1,14 @@
 import RxError from './rx-error'
 import RxExists from './rx-exists'
 import RxRead from './rx-read'
+import RxCopy from './rx-cp'
 import RxWrite from './rx-write'
 import RxRemove from './rx-remove'
 
 const LibFile = Object.assign(
   RxExists,
   RxRead,
+  RxCopy,
   RxWrite,
   RxRemove
 )

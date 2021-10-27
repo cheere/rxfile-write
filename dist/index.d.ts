@@ -18,7 +18,6 @@ declare module 'rxfile-write' {
   ): Promise<{ data: String }>;
 
   /**
-   * 往文件里面擦除式写内容
    * Erase write content to file
    */
   export function write(

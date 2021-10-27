@@ -10,12 +10,29 @@ declare module 'rxfile-write' {
     file: Boolean
   }>;
 
+   export function existsSync(
+    path: String,
+  ): {
+    dir: Boolean;
+    file: Boolean
+  };
+
   /**
    * Read everything in the file
    */
   export function read(
     path: String,
   ): Promise<{ data: String }>;
+
+  export function cp(
+    srcPath: String,
+    destPath: String,
+  ): Promise<void>;
+
+  export function cpSync(
+    srcPath: String,
+    destPath: String,
+  ): Boolean;
 
   /**
    * Erase write content to file

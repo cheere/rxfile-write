@@ -2,7 +2,7 @@
 
 [中文](https://github.com/cheere/rxfile-write/blob/main/README_CH.md)
 
-Node.js -> fs:
+Node.js -> fs: Simple use tool
 
 1. Determine whether the `file`/`directory` exists
 1. `Read` everything in the `file`
@@ -56,6 +56,8 @@ Node.js -> fs:
 # api
 1. exists
 1. read
+1. cp
+1. cpSync
 1. write
 1. writeSync
 1. writeAppend
