@@ -10,8 +10,8 @@
     "cp": "node build/rp-ts",
     "test": "node demo/test"
   },
-  "unpkg": "dist/rxfile-write.js",
-  "jsdelivr": "dist/rxfile-write.js",
+  "unpkg": "dist/index.js",
+  "jsdelivr": "dist/index.js",
   "author": "srxboys",
   "repository": {
     "type": "git",
