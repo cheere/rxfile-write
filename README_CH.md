@@ -14,7 +14,7 @@ Node.js -> fs: 简单使用工具
   // node / cjs
   const RxfileWrite = require('rxfile-write')
   // or
-  import RxfileWrite from 'RxfileWrite'
+  import RxfileWrite from 'rxfile-write'
   const path = require('path')
 
   function ps (p) {
