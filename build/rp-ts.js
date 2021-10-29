@@ -1,9 +1,9 @@
 const pathResolve = require('path').resolve
-const rxfileWrite = require('../dist/index')
+const rxfileWrite = require('../dist/rxfile-write')
 
 const DistPath = pathResolve(__dirname, '..', 'dist')
 const SrcPath = pathResolve(__dirname, '..', 'index.d.ts')
-const DstPath = pathResolve(DistPath, 'index.d.ts')
+const DstPath = pathResolve(DistPath, 'rxfile-write.d.ts')
 
 function w() {
   rxfileWrite.exists(SrcPath).then(() => {

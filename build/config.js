@@ -5,7 +5,7 @@ const FilePath = (p) => path.resolve(__dirname, '..', p)
 
 module.exports = [
   {
-    file: FilePath('dist/index.js'),
+    file: FilePath('dist/rxfile-write.js'),
     format: 'cjs',
     name: 'rxfile-write.cjs', // 如果 iife/umd 需要指定一个全局变量名
     banner: configBanner,

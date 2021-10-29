@@ -2,7 +2,7 @@
   "name": "rxfile-write",
   "version": "0.0.3",
   "description": "Addition, deletion, modification and query of documents.",
-  "main": "dist/index.js",
+  "main": "dist/rxfile-write.js",
   "scripts": {
     "build": "npm run clear && npm run lib && npm run cp",
     "clear": "node build/rm-dist",
@@ -10,8 +10,8 @@
     "cp": "node build/rp-ts",
     "test": "node demo/test"
   },
-  "unpkg": "dist/index.js",
-  "jsdelivr": "dist/index.js",
+  "unpkg": "dist/rxfile-write.js",
+  "jsdelivr": "dist/rxfile-write.js",
   "author": "srxboys",
   "repository": {
     "type": "git",

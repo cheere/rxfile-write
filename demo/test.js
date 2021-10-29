@@ -1,4 +1,4 @@
-const RxfileWrite = require('../dist/index')
+const RxfileWrite = require('../dist/rxfile-write')
 // const RxfileWrite = require('rxfile-write') // look d.ts
 const path = require('path')
 
