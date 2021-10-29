@@ -19,6 +19,33 @@ RxfileWrite.exists(ps('LICENSE')).then(() => {
 })
 
 
+RxfileWrite.cp(ps('LICENSE'), ps('new-LICENSE')).then(() => {
+  console.log('cp is ok')
+  setTimeout(() => {
+    RxfileWrite.remove(ps('new-LICENSE')).then(() => {
+      console.log('remove cp-LICENSE succ')
+    }).catch(err => {
+      console.log('remove cp-LICENSE error=', err)
+    })
+  }, 3000);
+}).catch(err => {
+  console.log('cp error=', err)
+})
+
+const cpRes = RxfileWrite.cpSync(ps('index.d.ts'), ps('test.d.ts'))
+if (cpRes) {
+  console.log('cpSync is ok')
+  setTimeout(() => {
+    RxfileWrite.remove(ps('test.d.ts')).then(() => {
+      console.log('remove cpSync-test.d.ts succ')
+    }).catch(err => {
+      console.log('remove cpSync-test.d.ts error=', err)
+    })
+  }, 3000);
+} else {
+  console.error('cpSync is false')
+}
+
 const WritePath = ps('ttt.txt')
 
 function rm() {

@@ -10,7 +10,7 @@ const LibCp = {}
  LibCp.cp = function (srcPath, destPath) {
   const _that = this
   return new Promise((resolve, reject) => {
-    _that.exists(path).then(() => {
+    _that.exists(srcPath).then(() => {
       cpFile(srcPath, destPath).then(() => {
         resolve()
       }).catch((error) => {
@@ -23,7 +23,7 @@ const LibCp = {}
 }
 
 LibCp.cpSync = function (srcPath, destPath) {
-  const fileInfo = this.existsSync(path)
+  const fileInfo = this.existsSync(srcPath)
   if (fileInfo.file) {
     return cpFileSync(srcPath, destPath)
   } else {
@@ -35,9 +35,9 @@ function cpFile(srcPath, destPath) {
   return new Promise((resolve, reject) => {
     fs.copyFile(srcPath, destPath, function (err) {
       if (err) {
-        resolve()
-      } else {
         reject(err)
+      } else {
+        resolve()
       }
     })
   })

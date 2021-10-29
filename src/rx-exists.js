@@ -34,8 +34,8 @@ LibEs.exists = function (path) {
 LibEs.existsSync = function (path) {
   const _that = this
   if (!path) {
-    reject(_that.error('rxrrw-existsSync=> path undefined'))
-    return
+    _that.error('rxrrw-existsSync=> path undefined')
+    return { dir: false, file: false }
   }
   const fileInfo = fs.statSync(path)
   if (fileInfo.isDirectory()) {
