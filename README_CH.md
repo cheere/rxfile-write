@@ -1,6 +1,6 @@
 # rxfile-write
 
-[EN](https://github.com/cheere/rxfile-write)
+To -> [EN](https://github.com/cheere/rxfile-write)
 
 Node.js -> fs: 简单使用工具
 

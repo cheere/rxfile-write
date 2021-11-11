@@ -8,8 +8,6 @@
   <script src="https://cdn.jsdelivr.net/npm/rxcornor@0.0.8/dist/index.js" id="rxcornor"
     link="https://github.com/cheere/rxfile-write" target="_blank" title="Github" className="a b"></script>
 
-  <!-- <script src="dist/index.js?97" id="rxcornor" link="https://github.com/cheere/rxcornor" target="_blank" title="Github" className="a b"></script> -->
-
   <!-- 用于加载 README.md -->
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/marked@4.0.0/marked.min.js"></script>
@@ -26,14 +24,26 @@
 
   <!-- 加载 md -->
   <script type="text/javascript">
+    var swithcEnZh = false
     $(function () {
-      const lang = getBrowserLang()
+      mdToHtml()
+    });
+  </script>
+
+  <script>
+    function mdToHtml() {
+      let lang = getBrowserLang()
+      if (swithcEnZh) {
+        if (lang === 'zh_CN') lang = 'en_US'
+        if (lang === 'en_US') lang = 'zh_CN'
+      }
 
       let readmeName = 'README'
       if (lang === 'zh_CN') {
-        readmeName + '_CH'
+        readmeName += '_CH'
       }
       readmeName += '.md'
+
       let res = null;
       $.ajax({
         url: readmeName,
@@ -43,7 +53,7 @@
           addColor()
         }
       });
-    });
+    }
   </script>
 
   <script>
@@ -87,11 +97,33 @@
         preCodeTohljs()
       }, 200);
     }
+
     function preCodeTohljs() {
-      const a = $('pre').find('code')
-      a.each(function () {
+      const code = $('pre').find('code')
+      code.each(function () {
         $(this).addClass('hljs')
       })
+      server()
+    }
+  </script>
+
+  <script>
+    function server() {
+      loc = window.location.href
+      if (loc && loc.indexOf('http') >= 0) {
+        const a = $('#content').find('p').find('a')
+        a.each(function () {
+          const href = $(this).attr('href')
+          if (href && href.indexOf('cheere/rxfile-write') > 0) {
+            $(this).attr('href', 'javascript:;')
+            $(this).click(function () {
+              document.getElementById('content').innerHTML = ''
+              swithcEnZh = !swithcEnZh
+              mdToHtml()
+            })
+          }
+        })
+      }
     }
   </script>
 </body>
