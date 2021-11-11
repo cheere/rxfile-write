@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>rxfile-write demo</title>
+  <script src="https://cdn.jsdelivr.net/npm/rxcornor@0.0.8/dist/index.js" id="rxcornor"
+    link="https://github.com/cheere/rxfile-write" target="_blank" title="Github" className="a b"></script>
+
+  <!-- <script src="dist/index.js?97" id="rxcornor" link="https://github.com/cheere/rxcornor" target="_blank" title="Github" className="a b"></script> -->
+
+  <!-- 用于加载 README.md -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked@4.0.0/marked.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.3.1/build/styles/default.min.css">
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.3.1/build/highlight.min.js"></script>
+</head>
+
+<body>
+  <h1>rxfile-write</h1>
+  <p>node.js - file -> add / remove / read。</p>
+  <br>
+  <hr>
+  <div id='content'></div>
+
+  <!-- 加载 md -->
+  <script type="text/javascript">
+    $(function () {
+      const lang = getBrowserLang()
+
+      let readmeName = 'README'
+      if (lang === 'zh_CN') {
+        readmeName + '_CH'
+      }
+      readmeName += '.md'
+      let res = null;
+      $.ajax({
+        url: readmeName,
+        dataType: 'text',
+        success: function (data) {
+          document.getElementById('content').innerHTML = marked.parse(data)
+          addColor()
+        }
+      });
+    });
+  </script>
+
+  <script>
+    const getBrowserLang = function () {
+      let browserLang = navigator.language
+        ? navigator.language
+        : navigator.browserLanguage;
+      let defaultBrowserLang = "";
+      if (
+        browserLang.toLowerCase() === "us" ||
+        browserLang.toLowerCase() === "en" ||
+        browserLang.toLowerCase() === "en_us"
+      ) {
+        defaultBrowserLang = "en_US";
+      } else {
+        defaultBrowserLang = "zh_CN";
+      }
+      return defaultBrowserLang;
+    }
+  </script>
+
+  <script>
+    marked.setOptions({
+      renderer: new marked.Renderer(),
+      gfm: true,
+      tables: true,
+      breaks: false,
+      pedantic: false,
+      sanitize: false,
+      smartLists: true,
+      smartypants: false,
+      highlight: function (code, lang) {
+        //使用 highlight 插件解析文档中代码部分
+        return hljs.highlightAuto(code, [lang]).value;
+      }
+    });
+  </script>
+  <script>
+    function addColor() {
+      setTimeout(() => {
+        preCodeTohljs()
+      }, 200);
+    }
+    function preCodeTohljs() {
+      const a = $('pre').find('code')
+      a.each(function () {
+        $(this).addClass('hljs')
+      })
+    }
+  </script>
+</body>
+
+</html>
