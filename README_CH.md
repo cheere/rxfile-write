@@ -1,8 +1,12 @@
-# rxfile-write
+# RxfileWrite
 
 To -> [EN](https://github.com/cheere/rxfile-write)
 
 Node.js -> fs: 简单使用工具
+
+```sh
+npm i rxfile-write --save-dev
+```
 
 1. 确定 `文件`/`目录` 是否存在
 1. 阅读`文件`中的所有内容

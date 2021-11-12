@@ -1,8 +1,12 @@
-# rxfile-write
+# RxfileWrite
 
 To -> [中文](https://github.com/cheere/rxfile-write/blob/main/README_CH.md)
 
 Node.js -> fs: Simple use tool
+
+```sh
+npm i rxfile-write --save-dev
+```
 
 1. Determine whether the `file`/`directory` exists
 1. `Read` everything in the `file`
