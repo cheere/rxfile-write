@@ -32,7 +32,7 @@ function remove(path) {
       }
       resolve()
     } catch (error) {
-      console.log('rxrrw-remove=> error=', error)
+      console.log('RxfileWrite-remove=> error=', error)
       reject(error)
     }
   })

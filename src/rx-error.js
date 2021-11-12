@@ -12,7 +12,7 @@ LibEr.error = function (error) {
   } else if (typeof err === 'object') {
     return err
   }
-  return new Error('rxrrw-error=>' + ' read.js -> ' + err)
+  return new Error('RxfileWrite-error=>' + ' read.js -> ' + err)
 }
 
 export default LibEr

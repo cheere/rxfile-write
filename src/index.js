@@ -13,11 +13,11 @@ const LibFile = Object.assign(
   RxRemove
 )
 
-const Rxrrw = Object.assign(
+const RxfileWrite = Object.assign(
   RxError,
   LibFile
 )
 
-Rxrrw.version = '__VERSION__'
+RxfileWrite.version = '__VERSION__'
 // console.log('lib=', lib)
-module.exports = Rxrrw
+module.exports = RxfileWrite

@@ -11,7 +11,7 @@ LibEs.exists = function (path) {
   const _that = this
   return new Promise((resolve, reject) => {
     if (!path) {
-      reject(_that.error('rxrrw-exist=> path undefined'))
+      reject(_that.error('RxfileWrite-exist=> path undefined'))
       return
     }
     fs.stat(path, (error, stats) => {
@@ -23,7 +23,7 @@ LibEs.exists = function (path) {
         } else if (stats.isFile()) {
           resolve({ dir: false, file: true })
         } else {
-          reject(_that.error('rxrrw-exist=> stats not dir/file'))
+          reject(_that.error('RxfileWrite-exist=> stats not dir/file'))
         }
       }
     })
@@ -34,7 +34,7 @@ LibEs.exists = function (path) {
 LibEs.existsSync = function (path) {
   const _that = this
   if (!path) {
-    _that.error('rxrrw-existsSync=> path undefined')
+    _that.error('RxfileWrite-existsSync=> path undefined')
     return { dir: false, file: false }
   }
   const fileInfo = fs.statSync(path)
@@ -43,7 +43,7 @@ LibEs.existsSync = function (path) {
   } else if (fileInfo.isFile()) {
     return { dir: false, file: true }
   } else {
-    _that.error('rxrrw-exist=> stats not dir/file')
+    _that.error('RxfileWrite-exist=> stats not dir/file')
     return { dir: false, file: false }
   }
 }
