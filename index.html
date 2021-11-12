@@ -43,6 +43,8 @@
         readmeName += '_CH'
       }
       readmeName += '.md'
+      const dateTime = parseInt(new Date().getTime() / 108000)
+      readmeName += '?' + dateTime
 
       let res = null;
       $.ajax({
