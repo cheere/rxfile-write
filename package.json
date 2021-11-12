@@ -1,6 +1,6 @@
 {
   "name": "rxfile-write",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Addition, deletion, modification and query of documents.",
   "main": "dist/rxfile-write.js",
   "scripts": {

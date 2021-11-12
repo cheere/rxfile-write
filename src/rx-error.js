@@ -57,10 +57,8 @@ LibEr.error = function (error, log) {
 
 function isRXFW(v) {
   if (v && (v.indexOf('rxfile-write.js') >= 0)) {
-    console.log('yes yes v=', v)
     return true
   }
-  console.log('no no v=', v)
   return false
 }
 
