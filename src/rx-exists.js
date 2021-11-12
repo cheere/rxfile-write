@@ -10,8 +10,8 @@ const LibEs = {}
 LibEs.exists = function (path) {
   const _that = this
   return new Promise((resolve, reject) => {
-    if (!path) {
-      reject(_that.error('RxfileWrite-exist=> path undefined'))
+    if (!_that.isString(path)) {
+      reject(_that.error('RxfileWrite-exist=> path undefined or null'))
       return
     }
     fs.stat(path, (error, stats) => {

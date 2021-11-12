@@ -40,6 +40,10 @@ LibW.writeAppendSync = function (filePath, text) {
 LibW.writeTo = function (filePath, text, isAppend = false) {
   return new Promise((resolve, reject) => {
     const dirPath = path.dirname(filePath)
+    if (!this.isData(text)) {
+      reject(this.error('text not `string or buffer` ', 'writeTo'))
+      return
+    }
     this.exists(dirPath).then(() => {
       doWrite(filePath, text, isAppend).then(resolve).catch(reject);
     }).catch(() => {

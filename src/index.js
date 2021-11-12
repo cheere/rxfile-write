@@ -5,12 +5,15 @@ import RxCopy from './rx-cp'
 import RxWrite from './rx-write'
 import RxRemove from './rx-remove'
 
+import RxUtils from './rx-utils'
+
 const LibFile = Object.assign(
   RxExists,
   RxRead,
   RxCopy,
   RxWrite,
-  RxRemove
+  RxRemove,
+  RxUtils
 )
 
 const RxfileWrite = Object.assign(

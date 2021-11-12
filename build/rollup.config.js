@@ -18,6 +18,7 @@ export default {
   output: [
     ...config
   ],
+  // sourceMap: true,
   plugins: [
     replace(env),
     nodeResolve({ preferBuiltins: false }),
@@ -26,5 +27,5 @@ export default {
     builtins(),
     terser(),
   ],
-  external: ['path', 'fs']
+  external: ['path', 'fs'],
 };
