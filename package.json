@@ -1,8 +1,8 @@
 {
   "name": "rxfile-write",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Addition, deletion, modification and query of documents.",
-  "main": "demo/test",
+  "main": "dist/rxfile-write.js",
   "scripts": {
     "build": "npm run clear && npm run lib && npm run cp",
     "clear": "node build/rm-dist",
