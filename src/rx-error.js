@@ -27,23 +27,23 @@ LibEr.error = function (error, log) {
       let space = sArray[i] || ''
       let msg = i + 1 < len ? sArray[i + 1] : ''
       if (i !== 0) {
-        space = 'at' + space
-        msg = 'at' + msg
+        space = space ? 'at' + space : ''
+        msg = msg ? 'at' + msg : ''
       }
       const newSingleStack = msg ? msg + space : space
       if (i === 0) {
         startArray.push(space)
-        mindArray.push('at' + msg)
+        msg && mindArray.push('at' + msg)
       }
       else if (space && (isRXFW(space) || isRXFW(msg))) {
-        mindArray.push(newSingleStack)
+        newSingleStack && mindArray.push(newSingleStack)
       } else {
         if (next) {
           next = false
-          mindArray.push(space)
-          lastArray.push(msg)
+          space && mindArray.push(space)
+          msg && lastArray.push(msg)
         } else {
-          lastArray.push(newSingleStack)
+          newSingleStack && lastArray.push(newSingleStack)
         }
       }
     }

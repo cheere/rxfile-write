@@ -2,3 +2,4 @@ build
 src
 index.d.ts
 index.html
+.vscode

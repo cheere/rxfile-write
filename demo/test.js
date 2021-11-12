@@ -6,6 +6,14 @@ function ps (p) {
   return path.resolve(__dirname, '..', p)
 }
 
+// error
+// RxfileWrite.write(ps('a.txt'), {a: 1}).then(() => {
+//   console.log('succ')
+// }).catch(err => {
+//   console.log('error=', err)
+// })
+// return
+
 RxfileWrite.read(ps('LICENSE')).then(data => {
   console.log('data\n\n', data)
 }).catch(err => {
