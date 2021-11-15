@@ -13,13 +13,6 @@ LibUtils.isFalse = function(v) {
 }
 
 LibUtils.isString = function (v) {
-  if (!this.isUndef(v) && typeof v === 'string') {
-    return true
-  }
-  return false
-}
-
-LibUtils.isString = function (v) {
   if (v && typeof v === 'string') {
     return true
   }

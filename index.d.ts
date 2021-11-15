@@ -1,5 +1,17 @@
 declare module 'rxfile-write' {
 
+  export function isUndef(value : any): Boolean;
+
+  export function isTrue(value : any): Boolean;
+
+  export function isFalse(value : any): Boolean;
+
+  export function isString(value : string): Boolean;
+
+  export function isObject(value : object): Boolean;
+
+  export function isData(value : string | Buffer): Boolean;
+
   /**
    * Determine whether the file/directory exists
    * Asynchronous
