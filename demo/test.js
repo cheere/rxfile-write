@@ -14,6 +14,9 @@ function ps (p) {
 // })
 // return
 
+// RxfileWrite.removeSync(ps('a11'))
+// return
+
 RxfileWrite.read(ps('LICENSE')).then(data => {
   console.log('data\n\n', data)
 }).catch(err => {

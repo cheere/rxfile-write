@@ -1,3 +1,4 @@
+import fs from 'fs'
 const LibUtils = {}
 
 LibUtils.isUndef = function(v) {
@@ -31,6 +32,22 @@ LibUtils.isData = function (v) {
     return true
   }
   return false
+}
+
+LibUtils.deleteDir = function(path) {
+  let files = [];
+  if (fs.existsSync(path)) {
+    files = fs.readdirSync(path);
+    files.forEach((file) => {
+      const curPath = path + '/' + file;
+      if (fs.statSync(curPath).isDirectory()) {
+        this.deleteDir(curPath); // Delete folder recursively
+      } else {
+        fs.unlinkSync(curPath); // Delete file
+      }
+    });
+    fs.rmdirSync(path);
+  }
 }
 
 export default LibUtils

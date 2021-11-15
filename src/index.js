@@ -4,6 +4,7 @@ import RxRead from './rx-read'
 import RxCopy from './rx-cp'
 import RxWrite from './rx-write'
 import RxRemove from './rx-remove'
+import RxRemoveSync from './rx-remove-sync'
 
 import RxUtils from './rx-utils'
 
@@ -13,6 +14,7 @@ const LibFile = Object.assign(
   RxCopy,
   RxWrite,
   RxRemove,
+  RxRemoveSync,
   RxUtils
 )
 

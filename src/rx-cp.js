@@ -47,6 +47,7 @@ function cpFileSync(srcPath, destPath) {
   try {
     fs.copyFileSync(srcPath, destPath)
   } catch (error) {
+    console.error(error)
     return false
   }
   return true
