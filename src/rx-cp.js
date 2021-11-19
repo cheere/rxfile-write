@@ -11,11 +11,7 @@ const LibCp = {}
   const _that = this
   return new Promise((resolve, reject) => {
     _that.exists(srcPath).then(() => {
-      cpFile(srcPath, destPath).then(() => {
-        resolve()
-      }).catch((error) => {
-        reject(error)
-      })
+      cpFile(srcPath, destPath).then(resolve).catch(reject)
     }).catch((error) => {
       reject(error)
     })

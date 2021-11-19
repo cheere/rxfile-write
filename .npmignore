@@ -1,5 +1,6 @@
+.vscode
 build
 src
 index.d.ts
 index.html
-.vscode
+package-lock.json

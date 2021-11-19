@@ -37,7 +37,7 @@ LibEs.existsSync = function (path) {
     _that.error('RxfileWrite-existsSync=> path undefined')
     return { dir: false, file: false }
   }
-  
+
   const fileInfo = fs.statSync(path)
   if (fileInfo.isDirectory()) {
     return { dir: true, file: false }

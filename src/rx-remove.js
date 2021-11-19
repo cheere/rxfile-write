@@ -11,11 +11,7 @@ LibRm.remove = function (path) {
   const _that = this
   return new Promise((resolve, reject) => {
     _that.exists(path).then(() => {
-      remove(path).then(() => {
-        resolve()
-      }).catch((error) => {
-        reject(error)
-      })
+      remove(path).then(resolve).catch(reject)
     }).catch((error) => {
       reject(error)
     })
