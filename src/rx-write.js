@@ -14,7 +14,7 @@ LibW.write = function (filePath, text) {
   return this.writeTo(filePath, text)
 }
 LibW.writeSync = function (filePath, text) {
-  doWriteSync(filePath, text)
+  doWriteSync(this, filePath, text)
 }
 
 /**
@@ -27,7 +27,7 @@ LibW.writeAppend = function (filePath, text) {
   return this.writeTo(filePath, text, true)
 }
 LibW.writeAppendSync = function (filePath, text) {
-  doWriteSync(filePath, text, true)
+  doWriteSync(this, filePath, text, true)
 }
 
 /**
@@ -38,16 +38,17 @@ LibW.writeAppendSync = function (filePath, text) {
  * @returns Promise
  */
 LibW.writeTo = function (filePath, text, isAppend = false) {
+  const that = this
   return new Promise((resolve, reject) => {
     const dirPath = path.dirname(filePath)
     if (!this.isData(text)) {
       reject(this.error('text not `string or buffer` ', 'writeTo'))
       return
     }
-    this.exists(dirPath).then(() => {
+    that.exists(dirPath).then(() => {
       doWrite(filePath, text, isAppend).then(resolve).catch(reject);
     }).catch(() => {
-      doMkdir(filePath).then(() => {
+      doMkdir(dirPath).then(() => {
         doWrite(filePath, text, isAppend).then(resolve).catch(reject);
       }).catch(reject)
     })
@@ -87,19 +88,29 @@ function doWrite(filePath, text, isAppend = false) {
   })
 }
 
-
-function doWriteSync(filePath, text, isAppend = false) {
+function doWriteSync(that, filePath, text, isAppend = false) {
+  let result = true
   let flag = 'w+'
   let todo = fs.writeFileSync
   if (isAppend) {
     todo = fs.appendFileSync
     flag = 'as+'
   }
+
   try {
-    todo(filePath, text, { encoding: 'utf8', mode: MODE_0666, flag })
+    const dirPath = path.dirname(filePath)
+    console.log('dirPath=', dirPath)
+    const dirInfo = that.mkdirsSync(dirPath)
+    if (!dirInfo) {
+      result = false
+    } else {
+      todo(filePath, text, { encoding: 'utf8', mode: MODE_0666, flag })
+    }
   } catch (error) {
+    result = false
     console.error(error)
   }
+  return result
 }
 
 export default LibW

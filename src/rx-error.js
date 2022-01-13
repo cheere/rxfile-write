@@ -6,7 +6,9 @@ const LibEr = {}
  * @param {string} error
  * @returns Error
  */
+LibEr.errorShow = true
 LibEr.error = function (error, log) {
+  if (!this.errorShow) return ''
   log = log || ''
   if (!error) {
     error = 'unknow'

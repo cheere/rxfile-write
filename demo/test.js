@@ -17,6 +17,25 @@ function ps (p) {
 // RxfileWrite.removeSync(ps('a11'))
 // return
 
+
+RxfileWrite.errorShow = false
+const a = RxfileWrite.existsSync(ps('b/a/a.txt'))
+console.log('a.file', a.file, ' -- a.dir', a.dir)
+console.log('\n\n')
+
+RxfileWrite.writeSync(ps('bb/bb.txt'), '')
+
+RxfileWrite.exists(ps('a/a.txt')).then(a => {
+  console.log('a.file', a.file, ' -- a.dir', a.dir)
+}).catch(error => {
+  console.log('-1-1-1-11-1-\n', error)
+})
+
+setTimeout(() => {
+  RxfileWrite.remove(ps('bb'))
+}, 1200);
+
+
 RxfileWrite.read(ps('LICENSE')).then(data => {
   console.log('data\n\n', data)
 }).catch(err => {
@@ -76,11 +95,13 @@ RxfileWrite.write(WritePath, 'hello world!').then(() => {
     RxfileWrite.writeAppend(WritePath, '11111').then(() => {
       setTimeout(() => {
         RxfileWrite.writeTo(WritePath, '2222', true).then(() => {
+          RxfileWrite.writeSync(WritePath, '3333')
+          RxfileWrite.writeAppendSync(WritePath, '4444')
           setTimeout(() => {
-            RxfileWrite.writeSync(WritePath, '3333')
-            RxfileWrite.writeAppendSync(WritePath, '4444')
             rm()
           }, 3000);
+        }).catch(error => {
+          console.log('\n\nrxfw- write to 222 error=\n', error)
         })
       }, 3000);
     })
