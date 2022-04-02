@@ -99,6 +99,4 @@ declare module 'rxfile-write' {
   export function remove(
     path: String,
   ): Promise<void>;
-
-  export function removeSync(path: String) : void;
 }

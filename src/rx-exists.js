@@ -1,21 +1,20 @@
 import fs from 'fs'
-import path from 'path'
 
 const LibEs = {}
 
 /**
  * Determine whether the file/directory exists
- * @param {string} filePath
+ * @param {string} path
  * @returns Promise
  */
-LibEs.exists = function (filePath) {
+LibEs.exists = function (path) {
   const _that = this
   return new Promise((resolve, reject) => {
-    if (!_that.isString(filePath)) {
-      reject(_that.error('RxfileWrite-exist=> filePath undefined or null'))
+    if (!_that.isString(path)) {
+      reject(_that.error('RxfileWrite-exist=> path undefined or null'))
       return
     }
-    fs.stat(filePath, (error, stats) => {
+    fs.stat(path, (error, stats) => {
       if (error) {
         reject(error)
       } else {
@@ -31,20 +30,15 @@ LibEs.exists = function (filePath) {
   })
 }
 
-LibEs.existsSync = function (filePath) {
+
+LibEs.existsSync = function (path) {
   const _that = this
-  if (!_that.isString(filePath)) {
-    _that.error('RxfileWrite-existsSync=> filePath undefined')
+  if (!path) {
+    _that.error('RxfileWrite-existsSync=> path undefined')
     return { dir: false, file: false }
   }
-
   try {
-    const dirPath = path.dirname(filePath)
-    const dirInfo = fs.existsSync(dirPath)
-    if (!dirInfo) {
-      return { dir: false, file: false }
-    }
-    const fileInfo = fs.statSync(filePath)
+    const fileInfo = fs.statSync(path)
     if (fileInfo.isDirectory()) {
       return { dir: true, file: false }
     } else if (fileInfo.isFile()) {
@@ -54,9 +48,7 @@ LibEs.existsSync = function (filePath) {
       return { dir: false, file: false }
     }
   } catch (error) {
-    if (_that.errorShow) {
-      console.log(this.error(error, 'exists try-catch error'))
-    }
+    _that.error('RxfileWrite-exist=> stats not dir/file')
     return { dir: false, file: false }
   }
 }

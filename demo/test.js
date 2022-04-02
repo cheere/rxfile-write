@@ -14,27 +14,26 @@ function ps (p) {
 // })
 // return
 
-// RxfileWrite.removeSync(ps('a11'))
-// return
+// RxfileWrite.read(ps('a.b.c.js')).then(data=> {
+//   console.log('read a.b.c.js=', data)
+// })
 
-
-RxfileWrite.errorShow = false
-const a = RxfileWrite.existsSync(ps('b/a/a.txt'))
-console.log('a.file', a.file, ' -- a.dir', a.dir)
-console.log('\n\n')
-
-RxfileWrite.writeSync(ps('bb/bb.txt'), '')
-
-RxfileWrite.exists(ps('a/a.txt')).then(a => {
-  console.log('a.file', a.file, ' -- a.dir', a.dir)
+RxfileWrite.cp(ps('src'), ps('newSrc')).then(() => {
+  console.log('copy 目录， 成功')
+  setTimeout(() => {
+    RxfileWrite.remove(ps('newSrc')).then(() => {
+      console.log('remove cp-newSrc succ')
+    }).catch(err => {
+      console.log('remove cp-newSrc error=', err)
+    })
+  }, 3000);
 }).catch(error => {
-  console.log('-1-1-1-11-1-\n', error)
+  console.log('error copy 目录， 失败', error)
 })
 
-setTimeout(() => {
-  RxfileWrite.remove(ps('bb'))
-}, 1200);
 
+// const cscRes = RxfileWrite.cpSync(ps('build'), ps('newbuild'))
+// console.log('cscRes build=', cscRes)
 
 RxfileWrite.read(ps('LICENSE')).then(data => {
   console.log('data\n\n', data)
@@ -95,13 +94,11 @@ RxfileWrite.write(WritePath, 'hello world!').then(() => {
     RxfileWrite.writeAppend(WritePath, '11111').then(() => {
       setTimeout(() => {
         RxfileWrite.writeTo(WritePath, '2222', true).then(() => {
-          RxfileWrite.writeSync(WritePath, '3333')
-          RxfileWrite.writeAppendSync(WritePath, '4444')
           setTimeout(() => {
+            RxfileWrite.writeSync(WritePath, '3333')
+            RxfileWrite.writeAppendSync(WritePath, '4444')
             rm()
           }, 3000);
-        }).catch(error => {
-          console.log('\n\nrxfw- write to 222 error=\n', error)
         })
       }, 3000);
     })

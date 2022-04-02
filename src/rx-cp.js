@@ -10,8 +10,19 @@ const LibCp = {}
  LibCp.cp = function (srcPath, destPath) {
   const _that = this
   return new Promise((resolve, reject) => {
-    _that.exists(srcPath).then(() => {
-      cpFile(srcPath, destPath).then(resolve).catch(reject)
+    _that.exists(srcPath).then((res) => {
+      if (res.dir) {
+        _that.loopCp(srcPath, destPath).then(resolve).catch(reject)
+      } else if (res.file) {
+        cpFile(srcPath, destPath).then(() => {
+          resolve('')
+        }).catch((error) => {
+          reject(error)
+        })
+      }
+      else {
+        reject('fileInfo type unknow')
+      }
     }).catch((error) => {
       reject(error)
     })
@@ -19,9 +30,12 @@ const LibCp = {}
 }
 
 LibCp.cpSync = function (srcPath, destPath) {
+  const _that = this
   const fileInfo = this.existsSync(srcPath)
   if (fileInfo.file) {
     return cpFileSync(srcPath, destPath)
+  } else if (fileInfo.dir) {
+    return _that.loopCpSync(srcPath, destPath)
   } else {
     return false
   }
@@ -33,7 +47,7 @@ function cpFile(srcPath, destPath) {
       if (err) {
         reject(err)
       } else {
-        resolve()
+        resolve('')
       }
     })
   })
@@ -43,7 +57,6 @@ function cpFileSync(srcPath, destPath) {
   try {
     fs.copyFileSync(srcPath, destPath)
   } catch (error) {
-    console.error(error)
     return false
   }
   return true

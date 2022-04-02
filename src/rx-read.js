@@ -11,7 +11,11 @@ LibR.read = function (path) {
   const _that = this
   return new Promise((resolve, reject) => {
     _that.exists(path).then(() => {
-      readData(path).then(resolve).catch(reject)
+      readData(path).then((content) => {
+        resolve(content)
+      }).catch((error) => {
+        reject(error)
+      })
     }).catch((error) => {
       reject(error)
     })

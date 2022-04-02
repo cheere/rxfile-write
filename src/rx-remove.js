@@ -11,27 +11,47 @@ LibRm.remove = function (path) {
   const _that = this
   return new Promise((resolve, reject) => {
     _that.exists(path).then(() => {
-      remove(_that,path).then(resolve).catch(reject)
+      remove(path).then(() => {
+        resolve()
+      }).catch((error) => {
+        reject(error)
+      })
     }).catch((error) => {
       reject(error)
     })
   })
 }
 
-function remove(that, path) {
+function remove(path) {
   return new Promise((resolve, reject) => {
     try {
       if (fs.statSync(path).isDirectory()) {
-        that.deleteDir(path) // Delete folder recursively
+        delDir(path); // Delete folder recursively
       } else {
         fs.unlinkSync(path); // Delete file
       }
       resolve()
     } catch (error) {
-      // console.log('RxfileWrite-remove=> error=', error)
+      console.log('RxfileWrite-remove=> error=', error)
       reject(error)
     }
   })
+}
+
+function delDir(path) {
+  let files = [];
+  if (fs.existsSync(path)) {
+    files = fs.readdirSync(path);
+    files.forEach((file) => {
+      const curPath = path + '/' + file;
+      if (fs.statSync(curPath).isDirectory()) {
+        delDir(curPath); // Delete folder recursively
+      } else {
+        fs.unlinkSync(curPath); // Delete file
+      }
+    });
+    fs.rmdirSync(path);
+  }
 }
 
 export default LibRm
