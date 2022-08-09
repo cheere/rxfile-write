@@ -32,14 +32,16 @@
 
   <script>
     function mdToHtml() {
-      let lang = getBrowserLang()
-      if (swithcEnZh) {
-        if (lang === 'zh_CN') lang = 'en_US'
-        if (lang === 'en_US') lang = 'zh_CN'
+      const lang = getBrowserLang()
+      let newLang = lang
+      if (swithcEnZh === true) {
+        if (lang === 'zh_CN') newLang = 'en_US'
+        if (lang === 'en_US') newLang = 'zh_CN'
+        console.log('mdToHtml 1111 lang=', newLang)
       }
 
       let readmeName = 'README'
-      if (lang === 'zh_CN') {
+      if (newLang === 'zh_CN') {
         readmeName += '_CH'
       }
       readmeName += '.md'
@@ -111,7 +113,7 @@
 
   <script>
     function server() {
-      loc = window.location.href
+      const loc = window.location.href
       if (loc && loc.indexOf('http') >= 0) {
         const a = $('#content').find('p').find('a')
         a.each(function () {
